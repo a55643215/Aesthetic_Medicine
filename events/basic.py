@@ -16,15 +16,15 @@ def about_us_event(event):
     #         }
     #     ]
     
-    text_message = TextSendMessage(text='''Hello! 您好，歡迎您成為 CHIEN Doctor 的好友！
+    text_message = TextSendMessage(text='''Hello! 您好，歡迎您成為 Aesthetc_Medicine 的好友！
 
-我是 CHIEN Doctor 小幫手！
+我是 Aesthetc_Medicine 小幫手！
 
 -歡迎預約門診
 
--門診掛號費150元/學生100元
+-諮詢費每30分鐘200元喔！
     
--減肥門診/小兒科/家庭醫學科/內科/外科''') #欲使用表情符號使用 emojis=emoji
+-醫美/整型外科/隆乳/隆鼻/美麗計畫''') #欲使用表情符號使用 emojis=emoji
 
 
     #貼圖
@@ -49,7 +49,7 @@ def about_us_event(event):
 #22.63539983180636, 120.30192498466002
 def location_event(event):
     location_message = LocationSendMessage(
-        title = "簡萬杰診所",
+        title = "醫美診所",
         address='高雄市新興區中山一路243號',
         latitude=22.63539983180636,
         longitude=120.30192498466002

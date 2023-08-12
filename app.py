@@ -66,15 +66,15 @@ def handle_postback(event):
 ################## 解除封鎖 ####################
 @handler.add(FollowEvent)
 def handle_follow(event):
-    welcome_msg="""Hello! 您好，歡迎您成為 CHIEN Doctor 的好友！
+    welcome_msg="""Hello! 您好，歡迎您成為 Aesthetc_Medicine 的好友！
 
-我是 CHIEN Doctor 小幫手！
+我是 Aesthetc_Medicine 小幫手！
 
 -歡迎預約門診
 
--門診掛號費150元/學生100元
+-諮詢費每30分鐘200元喔！
     
--減肥門診/小兒科/家庭醫學科/內科/外科"""
+-醫美/整型外科/隆乳/隆鼻/美麗計畫"""
 
     line_bot_api.reply_message(
         event.reply_token,
