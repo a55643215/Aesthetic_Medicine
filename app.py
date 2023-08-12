@@ -41,7 +41,7 @@ def callback():
 def handle_message(event):
     message_text = str(event.message.text).lower()
 
-    if message_text == '@查詢價格':
+    if message_text == '@關於我們':
         about_us_event(event)
 
     elif message_text == '@營業據點':
