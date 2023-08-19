@@ -85,7 +85,13 @@ def handle_postback(event):
 
     if data.get('action') == 'service':
         service_event(event)
+    elif data.get('action') == 'select_date':
+        service_select_date_event(event)
+    elif data.get('action') == 'select_time':
+        service_select_time_event(event)
 
+    #用get()來取得data中的資料，好處是如果備有data時會顯示None，而不會出線錯物
+    
 
 ################## 解除封鎖 ####################
 @handler.add(FollowEvent)
