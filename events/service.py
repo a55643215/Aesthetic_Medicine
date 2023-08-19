@@ -311,3 +311,33 @@ def service_select_time_event(event):
          event.reply_token,
          [text_message]
     )
+
+def service_confirm_event(event):
+     
+    data = dict(parse_qsl(event.postback.data))
+    booking_service = services[int(data['service_id'])] #取得要預約的服務項目資料，會出現1234對應到上面的service
+
+    confirm_template_message = TemplateSendMessage(
+        alt_text='請確認預約項目',
+        template = ConfirmTemplate(
+            text=f'您即將預約\n\n{booking_service["title"]} {booking_service["duration"]}\n預約時段: {data["date"]} {data["time"]}\n\n確認沒問題請按【確定】',
+            actions=[
+                 PostbackAction(
+                        label='確定',
+                        display_text='確定沒問題！',
+                        data=f'action=confirmed&service_id={data["service_id"]}&date={data["date"]}&time={data["time"]}'
+                 ),
+                 MessageAction(
+                        label='重新預約',
+                        text='我想重新預約'
+                 )
+            ]
+        )
+    )
+    line_bot_api.reply_message(
+         event.reply_token,
+         [confirm_template_message]
+    )
+
+def service_confirmed_event(event):
+     pass
