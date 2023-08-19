@@ -11,7 +11,7 @@ import os
 app = Flask(__name__)#admin: !QAZ2wsx資料庫的帳號和密碼
 #讓程式自己去判斷如果是測試端就會使用APP_SETTINGS
 app.config.from_object(os.environ.get('APP_SETTINGS', 'config.DevConfig'))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://doctordb:X1rooPEa77V2nfQlhH5OwwzVlx6WNt9n@dpg-cjbikn45kgrc73a7of9g-a.singapore-postgres.render.com/doctordb'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://medicine_offer:Vt6RqxnBcXH45JzKvz8wUqVJZi6Vq4Ny@dpg-cjg2jec1ja0c739odo7g-a.singapore-postgres.render.com/medicine_offer'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.app = app
 db.init_app(app)
