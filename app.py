@@ -89,6 +89,10 @@ def handle_postback(event):
         service_select_date_event(event)
     elif data.get('action') == 'select_time':
         service_select_time_event(event)
+    elif data.get('action') == 'confirm':
+        service_confirm_event(event)
+    elif data.get('action') == 'confirmed':
+        service_confirmed_event(event)
 
     #用get()來取得data中的資料，好處是如果備有data時會顯示None，而不會出線錯物
     
