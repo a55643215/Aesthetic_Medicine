@@ -4,7 +4,8 @@ from line_bot_api import *
 from events.basic import *
 
 from extensions import db, migrate
-from models.user import User
+from models.user import User    
+
 import os
 
 app = Flask(__name__)#admin: !QAZ2wsx資料庫的帳號和密碼
