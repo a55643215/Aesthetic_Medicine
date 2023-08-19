@@ -372,26 +372,48 @@ def is_booked(event, user):
 
 
 
+# def service_confirmed_event(event):
+#      data = dict(parse_qsl(event.postback.data))
+
+#      booking_service = services[int(data['service_id'])]
+#      booking_datetime = datetime.datetime.strptime(f'{data["date"]}{data["time"]}', '%Y-%m-%d %H:%M')
+
+#      user = User.query.filter(User.line_id == event.source.user_id).first()
+#      if is_booked(event,user):
+#           return
+#      reservation = Reservation(
+#           user_id= user.id,
+#           booking_service_category=f'{booking_service["category"]}',
+#           booking_service = f'{booking_service["title"]}{booking_service["duration"]}',
+#           booking_datetime = booking_datetime 
+#      )
+
+#      db.session.add(reservation)
+#      db.session.commit()
+
+#      line_bot_api.reply_message(
+#           event.reply_token,
+#           [TextSendMessage(text='沒問題！感謝您的預約，我已經幫你預約成功了喔，到時候見！')]
+#      )
 def service_confirmed_event(event):
-     data = dict(parse_qsl(event.postback.data))
+    data = dict(parse_qsl(event.postback.data))
 
-     booking_service = services[int(data['service_id'])]
-     booking_datetime = datetime.datetime.strptime(f'{data["date"]}{data["time"]}', '%Y-%m-%d %H:%M')
+    booking_service = services[int(data['service_id'])]
+    booking_datetime = datetime.datetime.strptime(f'{data["date"]} {data["time"]}', '%Y-%m-%d %H:%M')
 
-     user = User.query.filter(User.line_id == event.source.user_id).first()
-     if is_booked(event,user):
-          return
-     reservation = Reservation(
-          user_id= user.id,
-          booking_service_category=f'{booking_service["category"]}',
-          booking_service = f'{booking_service["title"]}{booking_service["duration"]}',
-          booking_datetime = booking_datetime 
-     )
+    user = User.query.filter(User.line_id == event.source.user_id).first()
+    if is_booked(event, user):
+        return
 
-     db.session.add(reservation)
-     db.session.commit()
+    reservation = Reservation(
+        user_id=user.id,
+        booking_service_category=f'{booking_service["category"]}',
+        booking_service=f'{booking_service["title"]} {booking_service["duration"]}',
+        booking_datetime=booking_datetime)
 
-     line_bot_api.reply_message(
-          event.reply_token,
-          [TextSendMessage(text='沒問題！感謝您的預約，我已經幫你預約成功了喔，到時候見！')]
-     )
+    db.session.add(reservation)
+    db.session.commit()
+
+    line_bot_api.reply_message(
+        event.reply_token,
+        [TextSendMessage(text='沒問題! 感謝您的預約，我已經幫你預約成功了喔，到時候見!')])
