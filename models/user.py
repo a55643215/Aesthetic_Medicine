@@ -2,7 +2,7 @@ from extensions import db
 import datetime
 
 class User(db.Model):
-    __rablename__ = 'user'
+    __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key = True) #設定他為主鍵
 

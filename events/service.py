@@ -113,7 +113,7 @@ services = {
 
     }
 
-def service_catgory_event(event):
+def service_category_event(event):
      image_carousel_template_message = TemplateSendMessage(
           alt_text = '請選擇想服務類別',
           template = ImageCarouselTemplate(

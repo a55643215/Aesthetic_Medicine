@@ -63,7 +63,7 @@ def handle_message(event):
     elif message_text == '@營業據點':
         location_event(event)
     elif message_text =='@預約服務':
-        service_catgory_event(event)
+        service_category_event(event)
 
     elif message_text.startswith('*'):
         if event.source.user_id not in ['U135d0047f682b28ef4001bcb47d0d21f']:
