@@ -71,7 +71,6 @@ def handle_message(event):
         if message_text in ['*data', '*d']:
             list_reservation_event(event)
         
-    
 
 
 #接收postback的訊息
@@ -93,6 +92,8 @@ def handle_postback(event):
         service_confirm_event(event)
     elif data.get('action') == 'confirmed':
         service_confirmed_event(event)
+    elif data.get('action') == 'cancel':
+        service_cancel_event(event)
 
     #用get()來取得data中的資料，好處是如果備有data時會顯示None，而不會出線錯物
     
