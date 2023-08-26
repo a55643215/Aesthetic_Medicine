@@ -435,21 +435,25 @@ def service_cancel_event(event):
         # line_bot_api.reply_message(
         #     event.reply_token,
         #     [TextSendMessage(text='您的預約已經幫你取消了')])
-        buttons_template_message = TemplateSendMessage(
+        buttons_cancel_message = TemplateSendMessage(
             alt_text='您的預約已幫你取消了！',
-            template=ButtonsTemplate(
-                title='您的預約已幫你取消了！',
+            template=ConfirmTemplate(
+                text='您的預約已幫你取消了！',
                 actions=[                     
                     MessageAction(
                         label='重新預約',
                         text='@預約服務'
-                 )
+                    ),
+                    MessageAction(
+                        label ='取消',
+                        text=''
+                    )
                 ]
             )
         )
         line_bot_api.reply_message(
             event.reply_token,
-            [buttons_template_message])
+            [buttons_cancel_message])
     else:
         line_bot_api.reply_message(
             event.reply_token,
