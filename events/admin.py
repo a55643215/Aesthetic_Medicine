@@ -17,7 +17,7 @@ def list_reservation_event(event):
         print(reservation.is_canceled)
         user_set = reservation.user_id
         user = User.query.filter(User.id == user_set).order_by(User.id.asc()).all
-        print(user)
+        print(user.display_name)
 #         reservation_data_text += f'''預約日期: {reservation.booking_datetime}
 # 預約服務: {reservation.booking_service}
 # 姓名: {reservation.user_id.user.display_name}\n'''
