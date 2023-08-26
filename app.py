@@ -70,6 +70,9 @@ def handle_message(event):
             return
         if message_text in ['*data', '*d']:
             list_reservation_event(event)
+    elif message_text == '@取消預約':
+        pass
+
         
 
 
