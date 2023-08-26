@@ -475,4 +475,4 @@ def service_cancel_event(event):
 
         line_bot_api.reply_message(
             event.reply_token,
-            [TextSendMessage(text='您目前沒有預約喔')])
+            [buttons_cancel_message])
