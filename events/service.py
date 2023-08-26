@@ -438,13 +438,10 @@ def service_cancel_event(event):
         buttons_template_message = TemplateSendMessage(
             alt_text='您的預約已幫你取消了！',
             template=ButtonsTemplate(
-                title='您已經有預約了',
-                text=f'{reservation.booking_service}\n預約時段: {reservation.booking_datetime}',
                 actions=[
                     PostbackAction(
-                        label='我想取消預約',
-                        display_text='我想取消預約',
-                        data='action=cancel'
+                        label='重新預約',
+                        display_text='@預約服務'
                     )
                 ]
             )
