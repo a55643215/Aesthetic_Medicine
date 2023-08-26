@@ -443,10 +443,6 @@ def service_cancel_event(event):
                     MessageAction(
                         label='重新預約',
                         text='@預約服務'
-                    ),
-                    MessageAction(
-                        label ='取消',
-                        text='取消'
                     )
                 ]
             )
@@ -463,10 +459,6 @@ def service_cancel_event(event):
                     MessageAction(
                         label='我要預約',
                         text='@預約服務'
-                    ),
-                    MessageAction(
-                        label ='取消',
-                        text='取消'
                     )
                 ]
             )
