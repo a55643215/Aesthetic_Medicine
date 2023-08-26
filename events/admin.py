@@ -14,9 +14,7 @@ def list_reservation_event(event):
     reservation_data_text = '## 預約名單: ## \n\n'
     #跑每一筆的預約資料
     for reservation in reservations:
-        print(reservation.is_canceled)
-        user_set = reservation.user_id
-        user=User.query.filter(User.id == user_set).first()
+        user=User.query.filter(User.id == reservation.user_id).first()
         
         reservation_data_text += f'''預約日期: {reservation.booking_datetime}
 預約服務: {reservation.booking_service}
