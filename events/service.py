@@ -330,7 +330,7 @@ def service_confirm_event(event):
                  ),
                  MessageAction(
                         label='重新預約',
-                        text='我想重新預約'
+                        text='@預約服務'
                  )
             ]
         )
@@ -432,9 +432,26 @@ def service_cancel_event(event):
         db.session.add(reservation)
         db.session.commit()
 
+        # line_bot_api.reply_message(
+        #     event.reply_token,
+        #     [TextSendMessage(text='您的預約已經幫你取消了')])
+        buttons_template_message = TemplateSendMessage(
+            alt_text='您的預約已幫你取消了！',
+            template=ButtonsTemplate(
+                title='您已經有預約了',
+                text=f'{reservation.booking_service}\n預約時段: {reservation.booking_datetime}',
+                actions=[
+                    PostbackAction(
+                        label='我想取消預約',
+                        display_text='我想取消預約',
+                        data='action=cancel'
+                    )
+                ]
+            )
+        )
         line_bot_api.reply_message(
             event.reply_token,
-            [TextSendMessage(text='您的預約已經幫你取消了')])
+            [buttons_template_message])
     else:
         line_bot_api.reply_message(
             event.reply_token,
