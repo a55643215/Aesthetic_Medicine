@@ -446,7 +446,7 @@ def service_cancel_event(event):
                     ),
                     MessageAction(
                         label ='取消',
-                        text=''
+                        text='取消'
                     )
                 ]
             )
