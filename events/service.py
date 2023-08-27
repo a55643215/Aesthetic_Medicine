@@ -271,7 +271,7 @@ def service_select_date_event(event):
     #weekday()取得星期幾?0是星期一
     for x in range(1,11):
         day = today + datetime.timedelta(days=x)#透過datetime.timedelta()可以取得隔天的日期
-        day = date_mach(day)
+        
 
         if day != 0 and (day.weekday() in business_day):
             quick_reply_button = QuickReplyButton(
@@ -288,21 +288,6 @@ def service_select_date_event(event):
          [text_message]
     )
 
-def date_mach(day):
-    day = day
-    reservation = Reservation.query.filter(day in Reservation.booking_datetime,
-                                            Reservation.is_canceled.is_(False),
-                                            Reservation.booking_datetime>datetime.datetime.now()).first()
-    if '11:00' not in reservation.booking_datetime:
-        return day
-    elif '14:00' not in reservation.booking_datetime:
-        return day
-    elif '17:00' not in reservation.booking_datetime:
-        return day
-    elif '20:00' not in reservation.booking_datetime:
-        return day
-    else :
-        return 0
 
 
 
